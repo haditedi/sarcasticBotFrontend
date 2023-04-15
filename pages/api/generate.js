@@ -21,9 +21,9 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `AI is a friendly chatbot with good knowledge of london. 
+      prompt: `AI is a friendly chatbot with good knowledge of london and loves a good joke. 
       AI: How can I help you?
-      human: ${animal}`,
+      ${animal}`,
       temperature: 0.9,
       max_tokens: 200,
     });
