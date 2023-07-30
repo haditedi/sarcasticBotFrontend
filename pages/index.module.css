@@ -10,61 +10,176 @@
   font-family: "ColfaxAI";
   src: url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
     url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff) format("woff");
-  font-weight: bold;
-  font-style: normal;
+  font-weight: normal;
+  font-style: 
+  normal;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height:100vh;
+}
+.conversation{
+  margin-top: 20px;
+  min-height:25vh;
+  display: flex;
+  justify-content: center;
+}
+.aiResponse{
+  padding:30px;
+  min-width: 300px;
+  max-width:640px;
+  margin-bottom:25px;
+  background-color: #91C8E4;
+  border-radius: 10px;
+}
+.aiResponse .assistant{
+  font-style: italic;
+  color:rgb(68, 67, 67);
+}
+.aiResponse p{
+  margin-bottom: 20px;
+}
+.chatbot{
+  min-width: 350px;
+  max-width:640px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #91C8E4;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.image{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:20px;
+  flex-grow: 1;
+  color:whitesmoke;
+  }
+.image p{
+  font-size:small;
+}
+.query{
+  align-self: center;
+  margin:20px;
 }
 .main,
 .main input {
   font-size: 16px;
   line-height: 24px;
-  color: #353740;
   font-family: "ColfaxAI", Helvetica, sans-serif;
 }
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
+
+.icon { 
+  width: 200px;
+  border-radius: 10px;
   
-}
-.main .icon {
-  width: 34px;
 }
 .main h3 {
   font-size: 32px;
   line-height: 40px;
   font-weight: bold;
-  color: #202123;
-  margin: 16px 0 40px;
+  margin: 16px 0 0px;
 }
-.main form {
-  display: flex;
-  flex-direction: column;
-  width: 320px;
+
+.main input[type="text"]{
+  padding: 30px;
+  min-width: 350px;
+  max-width: 500px;
+  border: 1px solid #4682A9;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
-.main input[type="text"] {
-  padding: 12px 16px;
-  border: 1px solid #10a37f;
-  border-radius: 4px;
-  margin-bottom: 24px;
-  outline-color: #10a37f;
-}
+.main input[type="text"]:focus{
+  outline: 2px solid #4682A9;
+ 
+  }
 .main ::placeholder {
   color: #8e8ea0;
   opacity: 1;
 }
+.main form{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .main input[type="submit"] {
+  margin-left: auto;
+  height: 50px;
+  width: 200px;
+  margin-top:10px;
   padding: 12px 0;
   color: #fff;
-  background-color: #10a37f;
+  background-color: #4682A9;
   border: none;
-  border-radius: 4px;
-  text-align: center;
+  border-radius: 10px;  
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
-.main .result {
-  font-weight: bold;
-  margin-top: 10px;
-  max-width: 450px;
-  text-align: center;
+.main input[type="submit"]:hover{
+  color:black;
+  background-color: #F6F4EB;
+}
+
+.ldsEllipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.ldsEllipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.ldsEllipsis div:nth-child(1) {
+  left: 8px;
+  animation: ldsEllipsis1 0.6s infinite;
+}
+.ldsEllipsis div:nth-child(2) {
+  left: 8px;
+  animation: ldsEllipsis2 0.6s infinite;
+}
+.ldsEllipsis div:nth-child(3) {
+  left: 32px;
+  animation: ldsEllipsis2 0.6s infinite;
+}
+.ldsEllipsis div:nth-child(4) {
+  left: 56px;
+  animation: ldsEllipsis3 0.6s infinite;
+}
+@keyframes ldsEllipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes ldsEllipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes ldsEllipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }

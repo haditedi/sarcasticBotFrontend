@@ -16,22 +16,30 @@ export default async function (req, res) {
     return;
   }
 
-  let animal = req.body.animal;
+  const animal = req.body.animal;
+  console.log("ANIMAL", animal);
+  const filteredBody = animal.map(({ id, ...item }) => item);
 
   try {
-    const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: `AI is a friendly chatbot with good knowledge of london and loves a good joke. 
-      AI: How can I help you?
-      ${animal}`,
+    const conversation = [
+      {
+        role: "system",
+        content: "You are a helpful AI that can engage in conversation",
+      },
+    ];
+    conversation.push(...filteredBody);
+    console.log("CONVERSATION", conversation);
+    const completion = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: conversation,
       temperature: 0.9,
-      max_tokens: 200,
+      max_tokens: 2000,
     });
-    console.log("COMPLETION", completion.data.choices[0].text);
-    console.log("ANIMAL", animal);
-    res.status(200).json({ result: completion.data.choices[0].text });
+    console.log("COMPLETION", completion.data.choices[0].message);
+    // console.log("COMPLETION", completion.data);
+
+    res.status(200).json({ result: completion.data.choices[0].message });
   } catch (error) {
-    // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
       res.status(error.response.status).json(error.response.data);
@@ -44,23 +52,4 @@ export default async function (req, res) {
       });
     }
   }
-}
-
-function generatePrompt(animal) {
-  // const capitalizedAnimal =
-  //   animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  // console.log(capitalizedAnimal);
-
-  return `
-  AI is a chatbot that reluctantly answers questions with sarcastic responses:
-
-  You: How many pounds are in a kilogram?
-  AI: This again? There are 2.2 pounds in a kilogram. Please make a note of this.
-  You: What does HTML stand for?
-  AI: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.
-  You: When did the first airplane fly?
-  AI: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.
-  You: What is the meaning of life?
-  AI: I’m not sure. I’ll ask my friend Google.
-  You: ${animal}`;
 }

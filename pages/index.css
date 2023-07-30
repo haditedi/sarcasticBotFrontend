@@ -1,0 +1,21 @@
+/* color palette: 
+#F6F4EB
+#91C8E4
+#749BC2
+#4682A9 */
+
+*{
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;    
+}
+
+body{
+    background-color: #4682A9;
+    color: whitesmoke;
+    color: black;
+    
+}
+p{ font-size: 1.5em;
+    line-height: 40px;
+} 

@@ -3,16 +3,30 @@ import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [myboolean, setMyboolean] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [result, setResult] = useState([]);
   const [history, setHistory] = useState([]);
   const bottomRef = useRef(null);
+  const [id, setId] = useState(0);
+  const [sendData, setSenddata] = useState(false);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
+  useEffect(() => {
+    if (id > 0) {
+      fetchData();
+    }
+
+    console.log("EFFECT SENDATA", sendData);
+    console.log("EFFECT HISTORY", history);
+    // setSenddata(!sendData);
+  }, [sendData]);
+
   const fetchData = async () => {
+    console.log("FETCH HISTORY", history);
+
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -21,46 +35,36 @@ export default function Home() {
         },
         body: JSON.stringify({ animal: history }),
       });
-
       const data = await response.json();
-      console.log(data);
+      console.log("FETCH", data.result);
       if (response.status !== 200) {
         throw (
           data.error ||
           new Error(`Request failed with status ${response.status}`)
         );
       }
-
-      setHistory((prev) => [...prev, data.result]);
+      setId(id + 1);
+      setHistory((prev) => [...prev, { id, ...data.result }]);
+      console.log("HISTORY FETCH", history);
+      setLoading(false);
     } catch (error) {
-      // Consider implementing your own error handling logic here
       console.error(error);
+      setLoading(false);
       alert(error.message);
     }
   };
 
-  useEffect(() => {
-    console.log("EFFECT");
-
-    if (myboolean) {
-      fetchData();
-      setMyboolean(false);
-    }
-    console.log("HISTORY EFFECT", history);
-  }, [history]);
-
-  function onSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault();
-    // console.log(animalInput);
-    // setResult((prev) => {
-    //   return [...prev, `Human: ${animalInput}`];
-    // });
-    // setAnimalInput("");
-    setHistory((prev) => [...prev, `Human: ${result}`]);
-    setMyboolean(true);
+    setId(id + 1);
+    console.log("SUBMIT ID", id);
+    setHistory((prev) => [...prev, { id, role: "user", content: result }]);
+    setLoading(true);
+    console.log("RESULT", result);
     setResult("");
-    console.log("BOOLEAN", myboolean);
-    console.log("HISTORY", history);
+    console.log("LOADING", loading);
+    console.log("SUBMIT HISTORY", history);
+    setSenddata(!sendData);
   }
 
   const onStateChange = (e) => {
@@ -68,37 +72,65 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <>
       <Head>
-        <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
+        <title>Chatbot AI</title>
+        <link rel="icon" href="/female chatbot.png" />
       </Head>
 
-      <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
-        <h3>Hi, Iam an AI</h3>
-        <div className={styles.result}>
-          <p>
-            Powered by ChatGPT. Hadi has instructed me to be a friendly chatbot
-            with good knowledge of London.
-          </p>
-          {history &&
-            history.map((item) => {
-              return <p key={item}>{item}</p>;
-            })}
+      <div className={styles.main}>
+        <div className={styles.conversation}>
+          {history.length > 0 && (
+            <div className={styles.aiResponse}>
+              {history &&
+                history.map((item) => {
+                  return (
+                    <p
+                      key={item.id}
+                      className={
+                        item.role == "assistant" ? styles.assistant : ""
+                      }
+                    >
+                      {item.content}
+                    </p>
+                  );
+                })}
+            </div>
+          )}
         </div>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="animal"
-            placeholder="Enter your query"
-            value={result}
-            onChange={onStateChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
-        <div ref={bottomRef} />
-      </main>
-    </div>
+
+        <div className={styles.chatbot}>
+          <div className={styles.image}>
+            <img src="/female chatbot.png" className={styles.icon} />
+            <h3>Hi, Iam an AI</h3>
+            <p>Powered by ChatGPT</p>
+          </div>
+
+          <div className={styles.query}>
+            <form onSubmit={onSubmit}>
+              <input
+                type="text"
+                name="animal"
+                placeholder="Enter your query"
+                value={result}
+                onChange={onStateChange}
+              />
+
+              {loading ? (
+                <div className={styles.ldsEllipsis}>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              ) : (
+                <input type="submit" value="Submit" />
+              )}
+              {/* <div ref={bottomRef} /> */}
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
