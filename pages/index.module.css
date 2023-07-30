@@ -183,3 +183,9 @@
     transform: translate(24px, 0);
   }
 }
+
+@media screen and (max-width: 650px){
+  .conversation{
+    min-height: 5vh;
+  }
+}
