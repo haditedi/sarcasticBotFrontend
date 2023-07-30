@@ -100,12 +100,14 @@ export default function Home() {
                     </p>
                   );
                 })}
-              <button
-                className={styles.clearAll}
-                onClick={deleteAllConversation}
-              >
-                Clear All
-              </button>
+              {history.length > 3 && (
+                <button
+                  className={styles.clearAll}
+                  onClick={deleteAllConversation}
+                >
+                  Clear All
+                </button>
+              )}
             </div>
           )}
         </div>
