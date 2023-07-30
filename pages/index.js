@@ -6,13 +6,13 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState([]);
   const [history, setHistory] = useState([]);
-  const bottomRef = useRef(null);
+  // const bottomRef = useRef(null);
   const [id, setId] = useState(0);
   const [sendData, setSenddata] = useState(false);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [history]);
+  // useEffect(() => {
+  //   bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [history]);
 
   useEffect(() => {
     if (id > 0) {
@@ -67,6 +67,11 @@ export default function Home() {
     setSenddata(!sendData);
   }
 
+  const deleteAllConversation = () => {
+    setHistory([]);
+    setResult([]);
+  };
+
   const onStateChange = (e) => {
     setResult(e.target.value);
   };
@@ -95,6 +100,12 @@ export default function Home() {
                     </p>
                   );
                 })}
+              <button
+                className={styles.clearAll}
+                onClick={deleteAllConversation}
+              >
+                Clear All
+              </button>
             </div>
           )}
         </div>

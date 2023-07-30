@@ -70,7 +70,7 @@
   margin:20px;
 }
 .main,
-.main input {
+.main input, .main button{
   font-size: 16px;
   line-height: 24px;
   font-family: "ColfaxAI", Helvetica, sans-serif;
@@ -123,9 +123,19 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
-.main input[type="submit"]:hover{
+.main input[type="submit"]:hover, .clearAll:hover{
   color:black;
   background-color: #F6F4EB;
+}
+.clearAll{
+  height: 50px;
+  width: 200px; 
+  background-color: #4682A9;
+  border: none;
+  border-radius: 10px;  
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  color: #fff;
 }
 
 .ldsEllipsis {
