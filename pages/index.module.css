@@ -18,13 +18,18 @@
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-height:100vh;
 }
 .conversation{
   margin-top: 20px;
   min-height:25vh;
+  min-width: 350px;
+  max-width:640px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .aiResponse{
   padding:30px;
@@ -107,11 +112,10 @@
 .main form{
   display:flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 .main input[type="submit"] {
-  margin-left: auto;
   height: 50px;
   width: 200px;
   margin-top:10px;
@@ -196,6 +200,7 @@
 
 @media screen and (max-width: 650px){
   .conversation{
+    width:100vw;
     min-height: 5vh;
   }
 }
