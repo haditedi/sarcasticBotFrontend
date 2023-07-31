@@ -93,7 +93,9 @@ export default function Home() {
                     <p
                       key={item.id}
                       className={
-                        item.role == "assistant" ? styles.assistant : ""
+                        item.role == "assistant"
+                          ? `${styles.assistant} ${styles.fade}`
+                          : ""
                       }
                     >
                       {item.content}

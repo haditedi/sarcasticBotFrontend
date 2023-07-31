@@ -15,6 +15,10 @@
   normal;
 }
 
+.test{
+  background-color: red;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -134,12 +138,20 @@
 .clearAll{
   height: 50px;
   width: 200px; 
+  margin-top:30px;
   background-color: #4682A9;
   border: none;
   border-radius: 10px;  
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   color: #fff;
+}
+
+@media screen and (max-width: 650px){
+  .conversation{
+    width:100vw;
+    min-height: 5vh;
+  }
 }
 
 .ldsEllipsis {
@@ -198,9 +210,17 @@
   }
 }
 
-@media screen and (max-width: 650px){
-  .conversation{
-    width:100vw;
-    min-height: 5vh;
+/* Create the typewriter animation */
+@keyframes slow {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 100%;
+  }
+}
+
+/* Apply the typewriter and blinking cursor animation to the heading */
+.fade {
+  animation: slow 4s;
 }
