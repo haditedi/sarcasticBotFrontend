@@ -28,7 +28,6 @@
 }
 .conversation{
   margin-top: 20px;
-  min-height:25vh;
   min-width: 350px;
   max-width:640px;
   display: flex;
