@@ -6,13 +6,13 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState([]);
   const [history, setHistory] = useState([]);
-  // const bottomRef = useRef(null);
+  const bottomRef = useRef(null);
   const [id, setId] = useState(0);
   const [sendData, setSenddata] = useState(false);
 
-  // useEffect(() => {
-  //   bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [history]);
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [history]);
 
   useEffect(() => {
     if (id > 0) {
@@ -110,13 +110,14 @@ export default function Home() {
                   Clear All
                 </button>
               )}
+              <div ref={bottomRef} />
             </div>
           )}
         </div>
 
         <div className={styles.chatbot}>
           <div className={styles.image}>
-            <img src="/female chatbot.png" className={styles.icon} />
+            <img src="/female chatbot300px.png" className={styles.icon} />
             <h3>Hi, Iam an AI</h3>
             <p>Powered by ChatGPT</p>
           </div>
@@ -141,7 +142,6 @@ export default function Home() {
               ) : (
                 <input type="submit" value="Submit" />
               )}
-              {/* <div ref={bottomRef} /> */}
             </form>
           </div>
         </div>

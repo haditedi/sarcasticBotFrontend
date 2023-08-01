@@ -152,6 +152,16 @@
     width:100vw;
     min-height: 5vh;
   }
+  .icon {
+    width:100px;
+  }
+  .image{
+    flex-direction: row;
+    gap: 20px;
+  }
+  .image p{
+    display: none;
+  }
 }
 
 .ldsEllipsis {
