@@ -92,13 +92,15 @@ export default function Home() {
                   return (
                     <p
                       key={item.id}
+                      ref={bottomRef}
                       className={
                         item.role == "assistant"
                           ? `${styles.assistant} ${styles.fade}`
                           : ""
                       }
                     >
-                      {item.content}
+                      `{item.content}
+                      {}`
                     </p>
                   );
                 })}
@@ -110,7 +112,7 @@ export default function Home() {
                   Clear All
                 </button>
               )}
-              <div ref={bottomRef} />
+              {/* <div ref={bottomRef} /> */}
             </div>
           )}
         </div>
