@@ -99,8 +99,7 @@ export default function Home() {
                           : ""
                       }
                     >
-                      `{item.content}
-                      {}`
+                      {item.content}
                     </p>
                   );
                 })}
