@@ -27,7 +27,7 @@
   min-height:100vh;
 }
 .conversation{
-  margin-top: 20px;
+  margin-top: 10px;
   min-width: 350px;
   max-width:640px;
   display: flex;
@@ -52,6 +52,7 @@
 .chatbot{
   min-width: 350px;
   max-width:640px;
+  padding:10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -147,10 +148,7 @@
 }
 
 @media screen and (max-width: 650px){
-  .conversation{
-    width:100vw;
-    min-height: 5vh;
-  }
+ 
   .icon {
     width:100px;
   }
