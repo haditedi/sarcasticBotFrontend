@@ -88,6 +88,7 @@ export default function Home() {
                     <p
                       key={item.id}
                       ref={bottomRef}
+                      style={{ whiteSpace: "pre-wrap" }}
                       className={
                         item.role == "assistant"
                           ? `${styles.assistant} ${styles.fade}`
