@@ -25,21 +25,24 @@ export default function Home() {
   }, [sendData]);
 
   const fetchData = async () => {
+    const url = "https://massive-capsule-395408.nw.r.appspot.com/";
+    // const url = "/api/generate";
+    // const url = "http://localhost:5000";
+    console.log("URL", url);
+
     console.log("FETCH HISTORY", history);
     try {
-      const response = await fetch(
-        "https://massive-capsule-395408.nw.r.appspot.com/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ animal: history }),
-        }
-      );
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ animal: history, key: "123456" }),
+      });
       const data = await response.json();
       console.log("FETCHED DATA", data);
       if (response.status !== 200) {
+        console.log(data);
         throw (
           data.error ||
           new Error(`Request failed with status ${response.status}`)
