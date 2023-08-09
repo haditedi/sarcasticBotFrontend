@@ -27,13 +27,16 @@ export default function Home() {
   const fetchData = async () => {
     console.log("FETCH HISTORY", history);
     try {
-      const response = await fetch("http://localhost:5000", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ animal: history }),
-      });
+      const response = await fetch(
+        "https://massive-capsule-395408.nw.r.appspot.com/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ animal: history }),
+        }
+      );
       const data = await response.json();
       console.log("FETCHED DATA", data);
       if (response.status !== 200) {
