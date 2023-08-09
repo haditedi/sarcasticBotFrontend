@@ -19,16 +19,15 @@ export default function Home() {
       fetchData();
     }
 
-    console.log("EFFECT SENDATA", sendData);
-    console.log("EFFECT HISTORY", history);
+    // console.log("EFFECT SENDATA", sendData);
+    // console.log("EFFECT HISTORY", history);
     // setSenddata(!sendData);
   }, [sendData]);
 
   const fetchData = async () => {
     console.log("FETCH HISTORY", history);
-
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch("http://localhost:5000", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +35,7 @@ export default function Home() {
         body: JSON.stringify({ animal: history }),
       });
       const data = await response.json();
-      console.log("FETCH", data.result);
+      console.log("FETCHED DATA", data);
       if (response.status !== 200) {
         throw (
           data.error ||
@@ -57,13 +56,9 @@ export default function Home() {
   async function onSubmit(event) {
     event.preventDefault();
     setId(id + 1);
-    console.log("SUBMIT ID", id);
     setHistory((prev) => [...prev, { id, role: "user", content: result }]);
     setLoading(true);
-    console.log("RESULT", result);
     setResult("");
-    console.log("LOADING", loading);
-    console.log("SUBMIT HISTORY", history);
     setSenddata(!sendData);
   }
 
@@ -111,7 +106,6 @@ export default function Home() {
                   Clear All
                 </button>
               )}
-              {/* <div ref={bottomRef} /> */}
             </div>
           )}
         </div>

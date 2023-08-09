@@ -28,17 +28,18 @@
 }
 .conversation{
   margin-top: 10px;
-  min-width: 350px;
-  max-width:640px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .aiResponse{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding:30px;
-  min-width: 300px;
-  max-width:640px;
-  margin-bottom:25px;
+  width: 640px;
+  margin:25px auto;
   background-color: #91C8E4;
   border-radius: 10px;
 }
@@ -47,14 +48,14 @@
   color:rgb(68, 67, 67);
 }
 .aiResponse p{
-  margin-bottom: 20px;
+  margin: 20px;
+  padding-top: 20px;
 }
 .chatbot{
-  min-width: 350px;
-  max-width:640px;
+  width:640px;
   padding:10px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   background-color: #91C8E4;
@@ -67,13 +68,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin:20px;
+  gap:10px;
+  margin:10px;
   flex-grow: 1;
   color:whitesmoke;
   }
 .image p{
   font-size:small;
+  margin:0;
+  line-height: 20px;
 }
+
 .query{
   align-self: center;
   margin:20px;
@@ -99,8 +104,9 @@
 
 .main input[type="text"]{
   padding: 30px;
-  min-width: 350px;
-  max-width: 500px;
+  width:350px;
+  /* min-width: 350px;
+  max-width: 500px; */
   border: 1px solid #4682A9;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -148,16 +154,21 @@
 }
 
 @media screen and (max-width: 650px){
- 
+  .aiResponse{
+    width: 350px;
+    }
+  .chatbot{
+    width: 350px;
+    flex-wrap: wrap;
+  }
+  .image p, .image h3 {
+    display: none;
+  }
   .icon {
     width:100px;
   }
-  .image{
-    flex-direction: row;
-    gap: 20px;
-  }
-  .image p{
-    display: none;
+  .main input[type="text"]{
+    width:300px;
   }
 }
 
