@@ -12,6 +12,10 @@ export default function Home() {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    //delete conversation if more than 20 chats
+    if (history.length > 20) {
+      deleteAllConversation();
+    }
   }, [history]);
 
   useEffect(() => {
@@ -25,9 +29,9 @@ export default function Home() {
   }, [sendData]);
 
   const fetchData = async () => {
-    const url = "https://massive-capsule-395408.nw.r.appspot.com/";
+    // const url = "https://massive-capsule-395408.nw.r.appspot.com/";
     // const url = "/api/generate";
-    // const url = "http://localhost:5000";
+    const url = "http://localhost:5000";
     console.log("URL", url);
 
     console.log("FETCH HISTORY", history);
@@ -91,21 +95,33 @@ export default function Home() {
               {history &&
                 history.map((item) => {
                   return (
-                    <p
-                      key={item.id}
-                      ref={bottomRef}
-                      style={{ whiteSpace: "pre-wrap" }}
-                      className={
-                        item.role == "assistant"
-                          ? `${styles.assistant} ${styles.fade}`
-                          : ""
-                      }
-                    >
-                      {item.content}
-                    </p>
+                    <div key={item.id} className={styles.chatContainer}>
+                      {item.role == "user" ? (
+                        <img
+                          className={styles.chatIcon}
+                          src="/emoji200px.png"
+                        />
+                      ) : (
+                        <img
+                          className={styles.chatIcon}
+                          src="/female_chaticon.png"
+                        />
+                      )}
+                      <p
+                        ref={bottomRef}
+                        style={{ whiteSpace: "pre-wrap" }}
+                        className={
+                          item.role == "assistant"
+                            ? `${styles.assistant} ${styles.fade}`
+                            : ""
+                        }
+                      >
+                        {item.content}
+                      </p>
+                    </div>
                   );
                 })}
-              {history.length > 3 && (
+              {history.length > 1 && (
                 <button
                   className={styles.clearAll}
                   onClick={deleteAllConversation}
