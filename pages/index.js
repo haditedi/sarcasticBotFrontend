@@ -158,7 +158,11 @@ export default function Home() {
                   <div></div>
                 </div>
               ) : (
-                <input type="submit" value="Submit" />
+                // <input type="submit" value="Submit" />
+                <button className={styles.clearAll} type="submit">
+                  Submit
+                  <img src="/mailicon50px.png" className={styles.mailIcon} />
+                </button>
               )}
             </form>
           </div>
