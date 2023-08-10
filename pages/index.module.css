@@ -27,13 +27,18 @@
   min-height:100vh;
 }
 .chatIcon{
-  width:50px;
+  width:40px;
+  height:50px;
+  padding-top: 10px;
+}
+.chatIconEmoji{
+  width:45px;
   height:50px;
   padding-top: 10px;
 }
 .chatContainer{
   display: flex;
-  column-gap: 10px;
+  
 }
 .conversation{
   margin-top: 10px;
@@ -164,6 +169,7 @@
 @media screen and (max-width: 650px){
   .aiResponse{
     width: 350px;
+    padding:10px;
     }
   .chatbot{
     width: 350px;

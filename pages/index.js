@@ -98,7 +98,7 @@ export default function Home() {
                     <div key={item.id} className={styles.chatContainer}>
                       {item.role == "user" ? (
                         <img
-                          className={styles.chatIcon}
+                          className={styles.chatIconEmoji}
                           src="/emoji200px.png"
                         />
                       ) : (
