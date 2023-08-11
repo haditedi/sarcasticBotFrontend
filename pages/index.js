@@ -10,8 +10,26 @@ export default function Home() {
   const [id, setId] = useState(0);
   const [sendData, setSenddata] = useState(false);
 
+  const scrollToTarget = (param) => {
+    const targetElement = param;
+    const padding = 100; // Adjust the padding value as needed
+
+    if (targetElement) {
+      const offset =
+        targetElement.getBoundingClientRect().top +
+        window.pageYOffset -
+        padding;
+
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current && scrollToTarget(bottomRef.current);
+    // bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     //delete conversation if more than 20 chats
     if (history.length > 20) {
       deleteAllConversation();
@@ -29,9 +47,9 @@ export default function Home() {
   }, [sendData]);
 
   const fetchData = async () => {
-    const url = "https://massive-capsule-395408.nw.r.appspot.com/";
+    // const url = "https://massive-capsule-395408.nw.r.appspot.com/";
     // const url = "/api/generate";
-    // const url = "http://localhost:5000";
+    const url = "http://localhost:5000";
     // console.log("URL", url);
 
     // console.log("FETCH HISTORY", history);
