@@ -47,9 +47,9 @@ export default function Home() {
   }, [sendData]);
 
   const fetchData = async () => {
-    // const url = "https://massive-capsule-395408.nw.r.appspot.com/";
+    const url = "https://massive-capsule-395408.nw.r.appspot.com/";
     // const url = "/api/generate";
-    const url = "http://localhost:5000";
+    // const url = "http://localhost:5000";
     // console.log("URL", url);
 
     // console.log("FETCH HISTORY", history);
