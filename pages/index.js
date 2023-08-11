@@ -85,7 +85,7 @@ export default function Home() {
     <>
       <Head>
         <title>Chatbot AI</title>
-        <link rel="icon" href="/female chatbot300px.png" />
+        <link rel="icon" href="/femaleico.ico" />
       </Head>
 
       <div className={styles.main}>
