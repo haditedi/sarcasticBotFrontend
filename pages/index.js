@@ -170,7 +170,12 @@ export default function Home() {
           )}
         </AnimatePresence>
 
-        <div className={styles.chatbot}>
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 2 }}
+          className={styles.chatbot}
+        >
           <div className={styles.image}>
             <img src="/female chatbot300px.png" className={styles.icon} />
             <h3>Hi, Iam an AI</h3>
@@ -187,23 +192,26 @@ export default function Home() {
                 value={result}
                 onChange={onStateChange}
               />
-              {/* {loading ? (
+              {loading ? (
                 <div className={styles.ldsEllipsis}>
                   <div></div>
                   <div></div>
                   <div></div>
                   <div></div>
                 </div>
-              ) : ( */}
-
-              <button className={styles.clearAll} type="submit">
-                Submit
-                <img src="/mailicon50px.png" className={styles.mailIcon} />
-              </button>
-              {/* )} */}
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  className={styles.clearAll}
+                  type="submit"
+                >
+                  Submit
+                  <img src="/mailicon50px.png" className={styles.mailIcon} />
+                </motion.button>
+              )}
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

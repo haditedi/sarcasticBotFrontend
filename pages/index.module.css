@@ -15,10 +15,6 @@
   normal;
 }
 
-.test{
-  background-color: red;
-}
-
 .main {
   display: flex;
   flex-direction: column;
@@ -118,8 +114,6 @@
 .main input[type="text"]{
   padding: 30px;
   width:350px;
-  /* min-width: 350px;
-  max-width: 500px; */
   border: 1px solid #4682A9;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -247,19 +241,4 @@
   100% {
     transform: translate(24px, 0);
   }
-}
-
-/* Create the typewriter animation */
-@keyframes slow {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-
-/* Apply the typewriter and blinking cursor animation to the heading */
-.fade {
-  animation: slow 4s;
 }
