@@ -49,9 +49,9 @@ export default function Home() {
   }, [sendData]);
 
   const fetchData = async () => {
-    const url = process.env.NEXT_PUBLIC_API_URL;
+    // const url = process.env.NEXT_PUBLIC_API_URL;
     // const url = "/api/generate";
-    // const url = "https://massive-capsule-395408.nw.r.appspot.com/";
+    const url = "https://massive-capsule-395408.nw.r.appspot.com/";
     // console.log("URL", url);
 
     // console.log("FETCH HISTORY", history);
