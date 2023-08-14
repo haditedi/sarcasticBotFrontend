@@ -61,7 +61,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: history, key: "123456" }),
+        body: JSON.stringify({ animal: history }),
       });
       const data = await response.json();
       // console.log("FETCHED DATA", data);
@@ -116,7 +116,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 100 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
               className={styles.conversation}
             >
