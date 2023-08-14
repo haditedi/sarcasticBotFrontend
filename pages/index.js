@@ -33,9 +33,9 @@ export default function Home() {
     bottomRef.current && scrollToTarget(bottomRef.current);
     // bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     //delete conversation if more than 20 chats
-    if (history.length > 20) {
-      deleteAllConversation();
-    }
+    // if (history.length > 20) {
+    //   deleteAllConversation();
+    // }
   }, [history]);
 
   useEffect(() => {
@@ -178,7 +178,7 @@ export default function Home() {
         >
           <div className={styles.image}>
             <img src="/female chatbot300px.png" className={styles.icon} />
-            <h3>Hi, Iam an AI</h3>
+            <h3>Hi, Iam Jane</h3>
             <p>Powered by ChatGPT</p>
           </div>
 
