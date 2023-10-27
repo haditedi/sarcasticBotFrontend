@@ -31,6 +31,15 @@ export default function Home() {
 
   useEffect(() => {
     bottomRef.current && scrollToTarget(bottomRef.current);
+    console.log("LENGTH", history.length);
+    if (history.length == 6) {
+      console.log("SIX");
+      setHistory((prev) => {
+        prev.splice(0, 1);
+        console.log(...prev);
+        return [...prev];
+      });
+    }
     // bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     //delete conversation if more than 20 chats
     // if (history.length > 20) {
@@ -40,12 +49,9 @@ export default function Home() {
 
   useEffect(() => {
     if (id > 0) {
+      console.log("USE EFFECT");
       fetchData();
     }
-
-    // console.log("EFFECT SENDATA", sendData);
-    // console.log("EFFECT HISTORY", history);
-    // setSenddata(!sendData);
   }, [sendData]);
 
   const fetchData = async () => {
@@ -74,7 +80,7 @@ export default function Home() {
       }
       setId(id + 1);
       setHistory((prev) => [...prev, { id, ...data.result }]);
-      // console.log("HISTORY FETCH", history);
+      console.log("HISTORY FETCH", history);
       setLoading(false);
     } catch (error) {
       console.error(error);
