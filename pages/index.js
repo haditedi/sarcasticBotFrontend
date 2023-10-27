@@ -31,12 +31,12 @@ export default function Home() {
 
   useEffect(() => {
     bottomRef.current && scrollToTarget(bottomRef.current);
-    console.log("LENGTH", history.length);
-    if (history.length == 6) {
-      console.log("SIX");
+    // console.log("LENGTH", history.length);
+    if (history.length == 8) {
+      // console.log("SIX");
       setHistory((prev) => {
         prev.splice(0, 1);
-        console.log(...prev);
+        // console.log(...prev);
         return [...prev];
       });
     }
@@ -49,7 +49,7 @@ export default function Home() {
 
   useEffect(() => {
     if (id > 0) {
-      console.log("USE EFFECT");
+      // console.log("USE EFFECT");
       fetchData();
     }
   }, [sendData]);
@@ -80,7 +80,7 @@ export default function Home() {
       }
       setId(id + 1);
       setHistory((prev) => [...prev, { id, ...data.result }]);
-      console.log("HISTORY FETCH", history);
+      // console.log("HISTORY FETCH", history);
       setLoading(false);
     } catch (error) {
       console.error(error);
